@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valle Sereno</title>
+    <link rel="stylesheet" href="static/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="static/images/logo.png" alt="Logo de Valle Sereno" class="logo">
+            <h1>Bienvenid@ a Valle Sereno</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#about">Sobre Nosotros</a></li>
+                <li><a href="#services">Servicios</a></li>
+                <li><a href="#gallery">Galería</a></li>
+                <li><a href="#testimonials">Testimonios</a></li>
+                <li><a href="#contact">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="about">
+        <h2>Sobre Nosotros</h2>
+        <p>Valle Sereno es una finca/hospedaje para turistas amantes de la naturaleza, que buscan nuevos aires y que el campo se convierta en un nuevo refugio. Ubicada entre La Ceja y Abejorral, Antioquia, Colombia, ofrece una vista 360° envidiable y está cerca del Ecoparque Salto del Buey.</p>
+    </section>
+
+    <section id="services">
+        <h2>Servicios</h2>
+        <ul>
+            <li>Hospedaje</li>
+            <li>Desayuno incluido</li>
+            <li>Kiosko para fogatas</li>
+            <li>Huerta</li>
+            <li>Juegos de mesa y dardos</li>
+            <li>Picnics de lujo</li>
+        </ul>
+    </section>
+
+    <section id="gallery" class="gallery">
+        <h2>Galería</h2>
+        <div class="slider">
+            <div><img src="static/images/Kiosko.jpeg" alt="Atardecer en el kiosko Valle Sereno"></div>
+            <div><img src="static/images/café.jpeg" alt="Café de Valle Sereno"></div>
+            <!-- Añade más imágenes aquí -->
+        </div>
+    </section>
+
+    <section id="testimonials">
+        <h2>Testimonios</h2>
+        <div class="testimonial">
+            <p>"Una experiencia inolvidable. La vista es espectacular y el servicio es excelente." - Juan Pérez</p>
+        </div>
+        <div class="testimonial">
+            <p>"El lugar perfecto para desconectarse y disfrutar de la naturaleza." - María González</p>
+        </div>
+        <!-- Añade más testimonios aquí -->
+    </section>
+
+    <section id="contact">
+        <h2>Contacto</h2>
+        <form id="contact-form" action="https://formspree.io/f/mdknnvql" method="POST">
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="email">Correo Electrónico:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="message">Mensaje:</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+            
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
+
+    <section id="map">
+        <h2>Ubicación</h2>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3968.4887555815567!2d-75.45149959999999!3d5.927147499999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e469390b68cad67%3A0xcb196f88cf6d922e!2sFinca%20Valle%20Sereno!5e0!3m2!1sen!2sco!4v1719519910124!5m2!1sen!2sco" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </section>
+
+    <footer>
+        <div class="social-media">
+            <a href="https://wa.me/573118359391" target="_blank" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.instagram.com/valle_sereno_?utm_source=qr&igsh=dDlpN2F6Nm00ZGRm" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+        </div>
+    </footer>
+
+    <script>
+        $(document).ready(function(){
+            $('.slider').slick({
+                dots: true,
+                infinite: true,
+                speed: 500,
+                fade: true,
+                cssEase: 'linear'
+            });
+        });
+
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+            var form = event.target;
+            fetch(form.action, {
+                method: form.method,
+                body: new FormData(form),
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    alert("Mensaje enviado con éxito!");
+                    form.reset(); // Limpiar el formulario
+                } else {
+                    response.json().then(data => {
+                        if (Object.hasOwn(data, 'errors')) {
+                            alert(data["errors"].map(error => error["message"]).join(", "));
+                        } else {
+                            alert("Oops! Ocurrió un problema al enviar el formulario.");
+                        }
+                    })
+                }
+            }).catch(error => {
+                alert("Oops! Ocurrió un problema al enviar el formulario.");
+            });
+        });
+    </script>
+</body>
+</html>

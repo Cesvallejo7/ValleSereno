@@ -1,0 +1,172 @@
+/* Continuación de Estilos Básicos */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background-color: #73ab53; /* Nuevo color verde */
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+header .logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+header .logo {
+    height: 50px; /* Puedes ajustar la altura según sea necesario */
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2em;
+    position: relative;
+}
+
+nav ul li a::after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 2px;
+    background: white;
+    transition: width .3s;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+    transition: width .3s;
+}
+
+section {
+    padding: 20px;
+    margin: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+section h2 {
+    color: #73ab53; /* Nuevo color verde */
+    font-size: 2em;
+}
+
+.gallery {
+    text-align: center;
+}
+
+.slider img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    border-radius: 10px;
+}
+
+.testimonial {
+    margin: 10px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-left: 5px solid #73ab53;
+    max-width: 600px;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+form label {
+    font-weight: bold;
+}
+
+form input,
+form textarea {
+    padding: 5px; /* Reducir el padding para hacer los campos más pequeños */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 0.9em; /* Reducir el tamaño de la fuente */
+}
+
+form button {
+    padding: 10px 20px;
+    background-color: #73ab53; /* Nuevo color verde */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+form button:hover {
+    background-color: #5e8d44; /* Color verde más oscuro para el hover */
+}
+
+/* Estilos para los iconos de redes sociales */
+.social-media {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.social-icon {
+    color: #73ab53; /* Color de los iconos */
+    font-size: 2em;
+    transition: color 0.3s;
+}
+
+.social-icon:hover {
+    color: #5e8d44; /* Color más oscuro al pasar el mouse */
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2em;
+    }
+
+    nav ul li a {
+        font-size: 1em;
+    }
+
+    section {
+        margin: 10px;
+        padding: 15px;
+    }
+
+    section h2 {
+        font-size: 1.5em;
+    }
+
+    .gallery img,
+    .gallery video {
+        max-width: 100%; /* Asegurarse de que las imágenes y videos no excedan el ancho del contenedor */
+    }
+}
